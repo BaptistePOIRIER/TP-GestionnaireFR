@@ -59,12 +59,12 @@ begin
 	MyCpt15sProc : process (clk1Hz, resetcpt)
 	begin 
 		if (resetcpt = '1') then
-			mycpt10s <= "0000";
+			mycpt15s <= "0000";
 		elsif rising_edge (clk1Hz) then
-			if mycpt10s = "1110" then
-				mycpt10s <= "0000";
+			if mycpt15s = "1110" then
+				mycpt15s <= "0000";
 			else
-				mycpt10s <= mycpt10s + 1;
+				mycpt15s <= mycpt15s + 1;
 			end if;
 		end if;
 	end process;

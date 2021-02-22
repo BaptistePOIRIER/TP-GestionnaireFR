@@ -74,11 +74,7 @@ begin
     ----------------------------------------------------------------------------
 	MyAutomateCtrl : process (clk1Hz, c1, c2, jour, reset)
 	begin
-		
-	    -----------------------------------
-		-- A compléter par les étudiants --
-		-----------------------------------		
-		
+	
 	end process;
 	
 	-- Process implicite permettant l'initialisation des compteurs 
