@@ -58,7 +58,7 @@ begin
 					mycpt10s <= mycpt10s + 1;
 				end if;
 			end if;
-		end process
+		end process;
 
 		MyCpt15sProc : process (clk1Hz, resetcpt)
 		begin 
@@ -71,7 +71,7 @@ begin
 					mycpt10s <= mycpt10s + 1;
 				end if;
 			end if;
-		end process
+		end process;
 	
 	-- Process implicites permettant de connecter les compteurs internes aux ports de sortie adéquats de l'entité
 	    
