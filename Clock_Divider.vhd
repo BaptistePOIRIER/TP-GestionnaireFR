@@ -55,54 +55,60 @@ begin
 	-- Process permettant de diviser l'horloge de 8 kHz à 800 Hz --
 	MyClk800Hz_process : process (mclk, reset)
 	begin
-		
-		-----------------------------------
-		-- A compléter par les étudiants --
-		-----------------------------------
-		
+		if (reset = '1') then
+			MyCpt800Hz <= "0000";
+		elsif rising_edge (mclk) then
+			if MyCpt800Hz = MyValCpt800Hz then
+				MyCpt800Hz <= "0000";
+			else
+				MyCpt800Hz <= MyCpt800Hz + 1;
+			end if;
+		end if;
 	end process;
+
+	MyClk800Hz <= '1' when MyCpt800Hz = "0000" else '0';
 	
 	-- Process permettant d'obtenir une horloge de 400 Hz de rapport cyclique 0,5 --
 	MyClk400Hz_process : process (MyClk800Hz, reset)
 	begin
-		
-		-----------------------------------
-		-- A compléter par les étudiants --
-		-----------------------------------
-		
+		if (reset = '1') then
+			MyClk400Hz <= '0';
+		elsif rising_edge (MyClk800Hz) then
+			MyClk400Hz <= not MyClk400Hz
+		end if;
 	end process;
 	
 	-- Process implicite permettant de connecter l'horloge interne de 400 Hz au port de sortie 400 Hz de l'entité --
-	    
-	    -----------------------------------
-		-- A compléter par les étudiants --
-		-----------------------------------
+	clk400Hz <= MyClk400Hz;
 	
 	-- Process permettant de diviser l'horloge de 400 Hz à 2 Hz --
 	MyClk2Hz_process : process (MyClk400Hz, reset)
 	begin
-	
-		-----------------------------------
-		-- A compléter par les étudiants --
-		-----------------------------------
-	
+		if (reset = '1') then
+			MyCpt2Hz <= "00000000";
+		elsif rising_edge (MyClk400Hz) then
+			if MyCpt2Hz = MyValCpt2Hz then
+				MyCpt2Hz <= "00000000";
+			else
+				MyCpt2Hz <= MyCpt2Hz + 1;
+			end if;
+		end if;
 	end process;
 	
+	MyClk2Hz <= '1' when MyCpt2Hz = "00000000" else '0';
+
 	-- Process permettant d'obtenir une horloge de 1 Hz de rapport cyclique 0,5 --
 	MyClk1Hz_process : process (MyClk2Hz, reset)
 	begin
-	    
-	    -----------------------------------
-		-- A compléter par les étudiants --
-		-----------------------------------
-	
+		if (reset = '1') then
+			MyClk1Hz <= '0';
+		elsif rising_edge (MyClk2Hz) then
+			MyClk1Hz <= not MyClk1Hz
+		end if;
 	end process;
 	
 	-- Process implicite permettant de connecter l'horloge interne de 1 Hz au port de sortie 1 Hz de l'entité
-	    
-	    -----------------------------------
-		-- A compléter par les étudiants --
-		-----------------------------------
+	clk1Hz <= MyClk1z;
 
 end Behavioral;
 

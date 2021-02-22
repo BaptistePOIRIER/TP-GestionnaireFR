@@ -42,44 +42,36 @@ architecture Behavioral of Compteur_10_15s is
 	
 begin
 
-	-- Process explicites internes permettant de décrire les deux compteurs 10 et 15 secondes 
-	    
-	    -----------------------------------
-		-- A compléter par les étudiants --
-		-----------------------------------
-		MyCpt10sProc : process (clk1Hz, resetcpt)
-		begin 
-			if (resetcpt = '1') then
+	-- Process explicites internes permettant de décrire les deux compteurs 10 et 15 secondes
+	MyCpt10sProc : process (clk1Hz, resetcpt)
+	begin 
+		if (resetcpt = '1') then
+			mycpt10s <= "0000";
+		elsif rising_edge (clk1Hz) then
+			if mycpt10s = "1001" then
 				mycpt10s <= "0000";
-			elsif rising_edge (clk1Hz) then
-				if mycpt10s = "1010" then
-					mycpt10s <= "0000";
-				else
-					mycpt10s <= mycpt10s + 1;
-				end if;
+			else
+				mycpt10s <= mycpt10s + 1;
 			end if;
-		end process;
+		end if;
+	end process;
 
-		MyCpt15sProc : process (clk1Hz, resetcpt)
-		begin 
-			if (resetcpt = '1') then
+	MyCpt15sProc : process (clk1Hz, resetcpt)
+	begin 
+		if (resetcpt = '1') then
+			mycpt10s <= "0000";
+		elsif rising_edge (clk1Hz) then
+			if mycpt10s = "1110" then
 				mycpt10s <= "0000";
-			elsif rising_edge (clk1Hz) then
-				if mycpt10s = "1111" then
-					mycpt10s <= "0000";
-				else
-					mycpt10s <= mycpt10s + 1;
-				end if;
+			else
+				mycpt10s <= mycpt10s + 1;
 			end if;
-		end process;
+		end if;
+	end process;
 	
 	-- Process implicites permettant de connecter les compteurs internes aux ports de sortie adéquats de l'entité
-	    
-	    -----------------------------------
-		-- A compléter par les étudiants --
-		-----------------------------------
-		cpt10s <= mycpt10s;
-		cpt15s <= mycpt15s;
+	cpt10s <= mycpt10s;
+	cpt15s <= mycpt15s;
 		
 end Behavioral;
 
