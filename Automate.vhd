@@ -74,25 +74,32 @@ begin
     ----------------------------------------------------------------------------
 	MyAutomateCtrl : process (clk1Hz, c1, c2, jour, reset)
 	begin
-		
-	    -----------------------------------
-		-- A compléter par les étudiants --
-		-----------------------------------		
+	
+		if (reset = '1') then
+			myauto <= "0000";
+		elsif rising_edge (clk1Hz) then
+			case (myauto) is
+				when "0000" =>
+					myauto <= "0001";
+				when "0001" =>
+					if (mycpt10s = "0000") then
+						myauto <= "0010";
+					end if;
+				when others =>
+					myauto <= "0000";
+			end case;
+
+		end if;
 		
 	end process;
 	
 	-- Process implicite permettant l'initialisation des compteurs 
-		
-		-----------------------------------
-		-- A compléter par les étudiants --
-		-----------------------------------
+	resetcpt <= '1' when myauto = "0000" or myauto = "0011" or myauto = "0110" or myauto = "1001" else '0';
 	
 	-- Process implicites d'affectations immédiates des signaux de sortie pour l'automate et les compteurs
-	
-		-----------------------------------
-		-- A compléter par les étudiants --
-		-----------------------------------
-	
+	cpt10s <= mycpt10s;
+	cpt15s <= mycpt15s;
+	myauto_out <= myauto;
 
 end Behavioral;
 
