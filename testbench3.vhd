@@ -99,9 +99,9 @@ port map (
     WAIT FOR 30sec;
     c2in <= '1';
     WAIT FOR 20sec;
-    c2in <= '0';
-    WAIT FOR 20sec;
     jourin <= '1';
+    WAIT FOR 60sec;
+    c2in <= '0';
     WAIT;
   end process;
   
