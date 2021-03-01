@@ -42,7 +42,7 @@ architecture Behavioral of Compteur_10_15s is
 	
 begin
 
-	-- Process explicites internes permettant de décrire les deux compteurs 10 et 15 secondes
+	-- Process explicites internes permettant de dÃ©crire les deux compteurs 10 et 15 secondes
 	MyCpt10sProc : process (clk1Hz, resetcpt)
 	begin 
 		if (resetcpt = '1') then
@@ -69,9 +69,8 @@ begin
 		end if;
 	end process;
 	
-	-- Process implicites permettant de connecter les compteurs internes aux ports de sortie adéquats de l'entité
+	-- Process implicites permettant de connecter les compteurs internes aux ports de sortie adÃ©quats de l'entitÃ©
 	cpt10s <= mycpt10s;
 	cpt15s <= mycpt15s;
 		
 end Behavioral;
-
