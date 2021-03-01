@@ -96,7 +96,7 @@ begin
 				when "0101" =>
 				    if ((jour = '1' and (not (c1 = '1' or c2 = '1'))) or (jour = '1' and not c1 = '1' and not c2 = '1')) then
 				        myauto <= "0000";
-				    elsif ((jour = '0') or (jour = '1' and (c1 = '1' or c2 = '1')) or (c1 = '1') or (c2 = '1')) then
+				    else
 				        myauto <= "0110";
 				    end if;
 				when "0110" =>
