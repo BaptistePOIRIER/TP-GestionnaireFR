@@ -36,8 +36,8 @@ end Clock_Divider;
 architecture Behavioral of Clock_Divider is
 
 	-- Constantes fournissant les valeurs limites des compteurs pour la division d'horloge --
-	constant MyValCpt800Hz : STD_LOGIC_VECTOR (3 downto 0) := "1001";	-- décimal : 9
-	constant MyValCpt2Hz : STD_LOGIC_VECTOR (7 downto 0) := "11000111";	-- décimal : 199
+	constant MyValCpt800Hz : STD_LOGIC_VECTOR (3 downto 0) := "1001";	-- dÃ©cimal : 9
+	constant MyValCpt2Hz : STD_LOGIC_VECTOR (7 downto 0) := "11000111";	-- dÃ©cimal : 199
 
 	-- Signaux de compteurs pour les divisions d'horloges --
 	signal MyCpt800Hz : STD_LOGIC_VECTOR (3 downto 0) := (others=>'0');
@@ -52,7 +52,7 @@ architecture Behavioral of Clock_Divider is
 
 begin
 
-	-- Process permettant de diviser l'horloge de 8 kHz à 800 Hz --
+	-- Process permettant de diviser l'horloge de 8 kHz Ã  800 Hz --
 	MyClk800Hz_process : process (mclk, reset)
 	begin
 		if (reset = '1') then
@@ -78,10 +78,10 @@ begin
 		end if;
 	end process;
 	
-	-- Process implicite permettant de connecter l'horloge interne de 400 Hz au port de sortie 400 Hz de l'entité --
+	-- Process implicite permettant de connecter l'horloge interne de 400 Hz au port de sortie 400 Hz de l'entitÃ© --
 	clk400Hz <= MyClk400Hz;
 	
-	-- Process permettant de diviser l'horloge de 400 Hz à 2 Hz --
+	-- Process permettant de diviser l'horloge de 400 Hz Ã  2 Hz --
 	MyClk2Hz_process : process (MyClk400Hz, reset)
 	begin
 		if (reset = '1') then
@@ -107,8 +107,7 @@ begin
 		end if;
 	end process;
 	
-	-- Process implicite permettant de connecter l'horloge interne de 1 Hz au port de sortie 1 Hz de l'entité
+	-- Process implicite permettant de connecter l'horloge interne de 1 Hz au port de sortie 1 Hz de l'entitÃ©
 	clk1Hz <= MyClk1Hz;
 
 end Behavioral;
-
