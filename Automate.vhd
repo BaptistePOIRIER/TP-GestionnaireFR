@@ -82,13 +82,42 @@ begin
 				when "0000" =>
 					myauto <= "0001";
 				when "0001" =>
-					if (mycpt10s = "0000") then
+					if (mycpt10s = "1001") then
 						myauto <= "0010";
 					end if;
+				when "0010" =>
+				    myauto <= "0011";
+				when "0011" =>
+				    myauto <= "0100";
+				when "0100" =>
+				    if (mycpt15s = "1110") then
+				        myauto <= "0101";
+				    end if;
+				when "0101" =>
+				    if ((jour = '1' and (not (c1 = '1' or c2 = '1'))) or (jour = '1' and not c1 = '1' and not c2 = '1')) then
+				        myauto <= "0000";
+				    elsif ((jour = '0') or (jour = '1' and (c1 = '1' or c2 = '1')) or (c1 = '1') or (c2 = '1')) then
+				        myauto <= "0110";
+				    end if;
+				when "0110" =>
+				    myauto <= "0111";
+				when "0111" =>
+				    if (mycpt10s = "1001") then
+				        myauto <= "1000";
+				    end if;
+				when "1000" =>
+				    myauto <= "1001";
+				when "1001" =>
+				    myauto <= "1010";
+				when "1010" =>
+				    if (mycpt15s = "1110") then
+				        myauto <= "1011";
+				    end if;
+				when "1011" =>
+				    myauto <= "0000";
 				when others =>
 					myauto <= "0000";
 			end case;
-
 		end if;
 		
 	end process;
@@ -102,4 +131,3 @@ begin
 	myauto_out <= myauto;
 
 end Behavioral;
-
