@@ -4,7 +4,7 @@
 -- 
 -- Create Date: 22.02.2021 15:24:25
 -- Design Name: 
--- Module Name: testbench - Behavioral
+-- Module Name: testbench_compteur - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,11 +31,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity testbench is
+entity testbench_compteur is
 --  Port ( );
-end testbench;
+end testbench_compteur;
 
-architecture Behavioral of testbench is
+architecture Behavioral of testbench_compteur is
 
 	-- Déclaration du composant à tester
 component Compteur_10_15s is

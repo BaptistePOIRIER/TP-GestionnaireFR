@@ -4,7 +4,7 @@
 -- 
 -- Create Date: 22.02.2021 15:24:25
 -- Design Name: 
--- Module Name: testbench - Behavioral
+-- Module Name: testbench_automate - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,11 +31,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity testbench is
+entity testbench_automate is
 --  Port ( );
-end testbench;
+end testbench_automate;
 
-architecture Behavioral of testbench is
+architecture Behavioral of testbench_automate is
 
 	-- Déclaration du composant à tester
 component Automate is
